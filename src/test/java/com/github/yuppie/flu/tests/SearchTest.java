@@ -17,18 +17,18 @@ import static org.hamcrest.Matchers.startsWith;
  */public class SearchTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
     /*===========================================[ INSTANCE VARIABLES ]===========*/
-    private MainWeatherPage homepage;
+    private MainWeatherPage mainPage;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     @BeforeMethod
     public void initPageObjects() {
         driver.get(baseUrl);
-        homepage = new MainWeatherPage(driver);
+        mainPage = new MainWeatherPage(driver);
     }
 
     @Test
-    public void testHomePageHasAHeader() {
-        homepage.search("кострома");
+    public void checkCustomCityForecastTest() {
+        mainPage.searchCity("кострома");
         WebElement element = driver.findElement(By.className("b-navigation-city"));
         assertThat(element.getText(), startsWith("Погода в Костром"));
     }
