@@ -18,10 +18,13 @@ public class SearchForm extends HtmlElement {
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     @FindBy(name = "request")
     private TextInput requestInput;
+
+    @FindBy(xpath = "//span[. = 'Найти']/input")
+    private Button searchButton;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public void search(String request) {
         requestInput.sendKeys(request);
-        submit();
+        searchButton.click();
     }
 }
