@@ -1,4 +1,4 @@
-package com.github.yuppie.flu;
+package com.github.yuppie.flu.tests;
 
 import java.io.IOException;
 
@@ -14,12 +14,18 @@ import org.testng.annotations.BeforeSuite;
 import com.github.yuppie.flu.util.PropertyLoader;
 
 /**
- * Base class for all the TestNG-based test classes
+ * Base class for Selenium tests for Yandex Weather service.
+ *
+ * @author Kirill Kozlov
+ * @since 21.09.2014
  */
-public class TestNgTestBase {
+public class YandexWeatherBaseTest {
+    /*===========================================[ STATIC VARIABLES ]=============*/
+    /*===========================================[ INSTANCE VARIABLES ]===========*/
     protected static String baseUrl;
     protected WebDriver driver;
-
+    /*===========================================[ CONSTRUCTORS ]=================*/
+    /*===========================================[ CLASS METHODS ]================*/
     @BeforeSuite
     public void initWebDriverFactory() throws IOException {
         baseUrl = PropertyLoader.loadProperty("site.url");

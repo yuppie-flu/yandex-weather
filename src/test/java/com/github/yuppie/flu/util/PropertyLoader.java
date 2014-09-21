@@ -11,11 +11,16 @@ import java.util.Properties;
  * Class that extracts properties from the prop file.
  */
 public class PropertyLoader {
+    /*===========================================[ STATIC VARIABLES ]=============*/
+    private static final String PROPERTIES_FILE = "/application.properties";
 
-    private static final String DEBUG_PROPERTIES = "/debug.properties";
+    /*===========================================[ INSTANCE VARIABLES ]===========*/
+    /*===========================================[ CONSTRUCTORS ]=================*/
+    private PropertyLoader() {}
 
+    /*===========================================[ CLASS METHODS ]================*/
     public static Capabilities loadCapabilities() throws IOException {
-        return loadCapabilities(System.getProperty("application.properties", DEBUG_PROPERTIES));
+        return loadCapabilities(System.getProperty("application.properties", PROPERTIES_FILE));
     }
 
     public static Capabilities loadCapabilities(String fromResource) throws IOException {
@@ -37,7 +42,7 @@ public class PropertyLoader {
     }
 
     public static String loadProperty(String name) throws IOException {
-        return loadProperty(name, System.getProperty("application.properties", DEBUG_PROPERTIES));
+        return loadProperty(name, System.getProperty("application.properties", PROPERTIES_FILE));
     }
 
     public static String loadProperty(String name, String fromResource) throws IOException {

@@ -1,4 +1,4 @@
-package com.github.yuppie.flu.pages;
+package com.github.yuppie.flu.elements;
 
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.annotations.Block;
@@ -8,15 +8,18 @@ import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextInput;
 
 /**
- * Created by tribal on 9/21/14.
+ * Represents search city form.
+ *
+ * @author Kirill Kozlov
+ * @since 21.09.2014
  */
-@Name("Search form")
 public class SearchForm extends HtmlElement {
-
-    @Name("Search request input")
+    /*===========================================[ STATIC VARIABLES ]=============*/
+    /*===========================================[ INSTANCE VARIABLES ]===========*/
     @FindBy(name = "request")
     private TextInput requestInput;
-
+    /*===========================================[ CONSTRUCTORS ]=================*/
+    /*===========================================[ CLASS METHODS ]================*/
     public void search(String request) {
         requestInput.sendKeys(request);
         submit();
