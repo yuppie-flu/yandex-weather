@@ -1,0 +1,14 @@
+*** Test cases ***
+1) Checking today weather report - ALMOST DONE
+2) Checking short forecast (9 days) - IN PROGRESS
+3) Checking detailed forecast
+4) Search custom city - TEMPLATE IS ready
+   - add data provider with several cities
+5) ...
+
+*** Infrastructure ***
+1) Add Allure reporting with screenshots
+
+*** Misc ***
+1) Different browsers (Selenium grid?)
+2) Clear processing of exceptional situations - NoElementFound, etc.
