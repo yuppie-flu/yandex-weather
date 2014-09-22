@@ -1,13 +1,12 @@
 package com.github.yuppie.flu.model;
 
 /**
- * TODO: add description
- *
  * @author Kirill Kozlov
  * @since 22.09.2014
  */
 public enum WindDirection {
-    N("северный"), E("восточный"), S("южный"), W("восточный");
+    N("северный"), E("восточный"), S("южный"), W("западный"),
+    SW("юго-западный"), SE("юго-восточный"), NE("северо-восточный"), NW("северо-западный");
 
     private String description;
 
