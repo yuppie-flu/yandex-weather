@@ -1,5 +1,6 @@
 package com.github.yuppie.flu.tests;
 
+import com.github.yuppie.flu.model.DayForecast;
 import com.github.yuppie.flu.model.DetailedWeatherReportModel;
 import com.github.yuppie.flu.model.WindModel;
 import com.github.yuppie.flu.pages.MainWeatherPage;
@@ -7,6 +8,8 @@ import org.joda.time.LocalTime;
 import org.joda.time.ReadablePartial;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.both;
 import static org.hamcrest.MatcherAssert.assertThat;
