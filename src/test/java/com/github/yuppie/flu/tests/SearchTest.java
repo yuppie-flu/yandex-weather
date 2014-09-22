@@ -1,9 +1,7 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.pages.MainWeatherPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,18 +12,12 @@ import static org.hamcrest.Matchers.startsWith;
  *
  * @author Kirill Kozlov
  * @since 21.09.2014
- */public class SearchTest extends YandexWeatherBaseTest {
+ */
+public class SearchTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
     /*===========================================[ INSTANCE VARIABLES ]===========*/
-    private MainWeatherPage mainPage;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
-    @BeforeMethod
-    public void initPageObjects() {
-        driver.get(baseUrl);
-        mainPage = new MainWeatherPage(driver);
-    }
-
     @Test
     public void checkCustomCityForecastTest() {
         mainPage.searchCity("кострома");

@@ -1,23 +1,15 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.model.DayForecast;
 import com.github.yuppie.flu.model.DetailedWeatherReportModel;
 import com.github.yuppie.flu.model.WindModel;
-import com.github.yuppie.flu.pages.MainWeatherPage;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePartial;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.both;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 /**
- * TODO: add description
- *
  * @author Kirill Kozlov
  * @since 21.09.2014
  */
@@ -38,15 +30,8 @@ public class ContentTest extends YandexWeatherBaseTest {
     private static final ReadablePartial MIN_SUNSET_TIME= new LocalTime(14, 0);
     private static final ReadablePartial MAX_SUNSET_TIME = new LocalTime(23, 59);
     /*===========================================[ INSTANCE VARIABLES ]===========*/
-    private MainWeatherPage mainPage;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
-    @BeforeMethod
-    public void initPageObjects() {
-        driver.get(baseUrl);
-        mainPage = new MainWeatherPage(driver);
-    }
-
     @Test
     public void checkTodayWeatherTest() {
         DetailedWeatherReportModel model = mainPage.getCurrentWeatherReport();

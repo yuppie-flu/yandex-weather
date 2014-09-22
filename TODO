@@ -24,3 +24,4 @@
 3) Run tests via proxy: geo location detection via IP
 4) Run tests in different time, cause page content depends on local time
 5) What about locale? Is this service only in Russian?
+6) @CacheLookup - do not search elements several times

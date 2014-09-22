@@ -1,9 +1,7 @@
 package com.github.yuppie.flu.tests;
 
 import com.github.yuppie.flu.model.DayForecast;
-import com.github.yuppie.flu.pages.MainWeatherPage;
 import org.joda.time.LocalDate;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -24,15 +22,8 @@ public class ShortForecastScrollTest extends YandexWeatherBaseTest {
     public static final String TODAY_DAYNAME = "сегодня";
     public static final String TOMORROW_DAYNAME = "завтра";
     /*===========================================[ INSTANCE VARIABLES ]===========*/
-    private MainWeatherPage mainPage;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
-    @BeforeMethod
-    public void initPageObjects() {
-        driver.get(baseUrl);
-        mainPage = new MainWeatherPage(driver);
-    }
-
     @Test
     public void checkForecastShortScrollTest() {
         int actualScroolSize = mainPage.getShortForecastScrollSize();
