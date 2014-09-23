@@ -16,15 +16,6 @@ public class WebDriverFactory {
     public static WebDriver getWebDriver() {
         if (webDriver == null) {
             webDriver = new FirefoxDriver();
-            /*
-            Runtime.getRuntime().addShutdownHook(new Thread() {
-                public void run() {
-                    if (webDriver != null) {
-                        webDriver.quit();
-                    }
-                }
-            });
-            */
         }
         return webDriver;
     }
