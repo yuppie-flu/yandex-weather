@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.*;
  * @author Kirill Kozlov
  * @since 21.09.2014
  */
-public class ContentTest extends YandexWeatherBaseTest {
+public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
     private static final int MAX_REGISTERED_TEMP = 57;
     private static final int MIN_REGISTERED_TEMP = -92;

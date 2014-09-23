@@ -4,19 +4,16 @@
 3) Checking detailed forecast
 4) Search custom city - TEMPLATE IS ready
    - add data provider with several cities
-5) ...
-6)
-7)
+5) Checking links to other Yandex services
+6) ...
+7) ...
 ---
 * Check that ads are shown, cause it's money?
-* Check links to other services in page header?
 * Check Authorization form?
-*
+* ...
 
 *** Infrastructure ***
-1) Clarify where Driver initialization, page loading should be located -
-   BeforeSuite, BeforeMethod, base or custom class, etc.!
-2) Add Allure reporting with screenshots
+1) Add Allure reporting with screenshots
 
 *** Misc ***
 1) Different browsers (Selenium grid?)

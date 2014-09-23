@@ -1,8 +1,6 @@
 package com.github.yuppie.flu.pages;
 
-import com.github.yuppie.flu.elements.ForecastShortScroll;
-import com.github.yuppie.flu.elements.SearchForm;
-import com.github.yuppie.flu.elements.TodayWeatherBlock;
+import com.github.yuppie.flu.elements.*;
 import com.github.yuppie.flu.model.DayForecast;
 import com.github.yuppie.flu.model.DetailedWeatherReportModel;
 import org.openqa.selenium.WebDriver;
@@ -18,11 +16,16 @@ import java.util.List;
  * @author Kirill Kozlov
  * @since 21.09.2014
  */
-public class MainWeatherPage {
+public class MainWeatherPage extends YandexPage {
     /*===========================================[ STATIC VARIABLES ]=============*/
     /*===========================================[ INSTANCE VARIABLES ]===========*/
+    private WebDriver driver;
+
     @FindBy(className = "b-search__table")
     private SearchForm searchForm;
+
+    @FindBy(className = "l-head__c")
+    private OtherServicesLinks otherServicesLinks;
 
     @FindBy(xpath = "//div[@class = 'b-today']/..")
     private TodayWeatherBlock todayWeatherBlock;
@@ -30,8 +33,13 @@ public class MainWeatherPage {
     @FindBy(xpath = "//div[@class = 'b-forecast-scroll']/div")
     private ForecastShortScroll shortScroll;
 
+    @FindBy(xpath = "//div[@class = 'b-widget-current-weather']/following-sibling::*[1]/self::div")
+    private ForecastTypeSelector forecastTypeSelector;
+
     /*===========================================[ CONSTRUCTORS ]=================*/
     public MainWeatherPage(WebDriver driver) {
+        super(driver.getCurrentUrl());
+        this.driver = driver;
         PageFactory.initElements(new HtmlElementDecorator(driver), this);
     }
 
@@ -50,5 +58,20 @@ public class MainWeatherPage {
 
     public int getShortForecastScrollSize() {
         return shortScroll.size();
+    }
+
+    public DetailedForecastPage getDetaliedForecat() {
+        forecastTypeSelector.selectDetailedReport(driver);
+        return new DetailedForecastPage(driver);
+    }
+
+    public ClimatePage getClimate() {
+        forecastTypeSelector.selectClimateReport(driver);
+        return new ClimatePage(driver);
+    }
+
+    public YandexMailPage goToMail() {
+        otherServicesLinks.goToMail();
+        return new YandexMailPage(driver);
     }
 }
