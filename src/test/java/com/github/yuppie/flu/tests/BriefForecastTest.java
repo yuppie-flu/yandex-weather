@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
  * @author Kirill Kozlov
  * @since 23.09.2014
  */
-public class BriefForecastScrollTest extends YandexWeatherBaseTest {
+public class BriefForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
     public static final int TODAY_SCROLL_SIZE = 10;
     public static final int TOMORROW_SCROLL_SIZE = 9;

@@ -1,12 +1,16 @@
 package com.github.yuppie.flu.tests;
 
+import com.github.yuppie.flu.model.BriefDayForecast;
 import com.github.yuppie.flu.model.DetailedDayForecast;
 import com.github.yuppie.flu.pages.DetailedForecastPage;
 import com.github.yuppie.flu.util.WebDriverFactory;
+import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
@@ -45,8 +49,16 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
                 actualScroolSize,
                 anyOf(equalTo(TODAY_SCROLL_SIZE), equalTo(TOMORROW_SCROLL_SIZE)));
 
-        for (DetailedDayForecast df: detailedForecastPage.getDetailedForecast()) {
-            LOGGER.info("Day name: {}", df.getDayName());
+        List<DetailedDayForecast> forecast = detailedForecastPage.getDetailedForecast();
+        LocalDate startDate = LocalDate.now();
+
+        for (int i = 0; i < actualScroolSize; i++) {
+            DetailedDayForecast df = forecast.get(i);
+
+            LocalDate actualDate = df.getDate();
+            LocalDate expectedDate = startDate.plusDays(i);
+
+            assertThat("Incorrect date", actualDate, equalTo(expectedDate));
         }
     }
 }

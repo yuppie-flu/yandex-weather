@@ -10,25 +10,15 @@ import java.util.regex.Pattern;
  * @author Kirill Kozlov
  * @since 22.09.2014
  */
-public class BriefDayForecast {
+public class BriefDayForecast extends DayForecast {
     /*===========================================[ STATIC VARIABLES ]=============*/
     public static final Pattern DATE_PATTERN = Pattern.compile("([0-9]{1,2})( [а-я]*)?");
     /*===========================================[ INSTANCE VARIABLES ]===========*/
-    private String dayName;
-    private LocalDate date;
     private String description;
     private int dayTemp;
     private int nightTemp;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
-    public String getDayName() {
-        return dayName;
-    }
-
-    public void setDayName(String dayName) {
-        this.dayName = dayName;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -49,10 +39,6 @@ public class BriefDayForecast {
         int month = DateTime.now().getMonthOfYear();
         int day = Integer.parseInt(matcher.group(1));
         date = new LocalDate(year, month, day);
-    }
-
-    public LocalDate getDate() {
-        return date;
     }
 
     public void setDayTemp(String dayTemp) {
