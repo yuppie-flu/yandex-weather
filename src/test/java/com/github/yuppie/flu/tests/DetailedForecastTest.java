@@ -1,5 +1,6 @@
 package com.github.yuppie.flu.tests;
 
+import com.github.yuppie.flu.matchers.AirPressureMatchers;
 import com.github.yuppie.flu.matchers.TemperatureMatchers;
 import com.github.yuppie.flu.model.*;
 import com.github.yuppie.flu.pages.DetailedForecastPage;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.github.yuppie.flu.matchers.AirPressureMatchers.withinLogicalAirPressureLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunriseTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunsetTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
@@ -87,8 +89,13 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
                         withinHistoricalRecordsLimits());
                 assertThat(tempMessage, weatherData.getMaxTemperature(),
                         withinHistoricalRecordsLimits());
-                LOGGER.info("{} temperatures: {} - {}", dayPart,
-                        weatherData.getMinTemperature(), weatherData.getMaxTemperature());
+
+                assertThat("Air pressure limits violation", weatherData.getAirPressure(),
+                        withinLogicalAirPressureLimits());
+
+                LOGGER.info("{} temperatures: {} - {}, air pressure: {}", dayPart,
+                        weatherData.getMinTemperature(), weatherData.getMaxTemperature(),
+                        weatherData.getAirPressure());
             }
         }
     }

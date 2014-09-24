@@ -16,11 +16,15 @@ public class DayPartWeatherRow extends HtmlElement {
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     @FindBy(className = "b-forecast-detailed__temp")
     private TextBlock temp;
+
+    @FindBy(css = "td.b-forecast-detailed__item_type_pressure")
+    private TextBlock airPressure;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public BriefWeatherData getWeatherData() {
         BriefWeatherData weatherData = new BriefWeatherData();
         weatherData.setTemperaturesInterval(temp.getText());
+        weatherData.setUnformattedAirPressure(airPressure.getText());
         return weatherData;
     }
 }

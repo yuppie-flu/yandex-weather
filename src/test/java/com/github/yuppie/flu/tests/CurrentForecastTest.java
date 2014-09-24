@@ -1,5 +1,6 @@
 package com.github.yuppie.flu.tests;
 
+import com.github.yuppie.flu.matchers.AirPressureMatchers;
 import com.github.yuppie.flu.matchers.TemperatureMatchers;
 import com.github.yuppie.flu.model.BriefWeatherData;
 import com.github.yuppie.flu.model.WindModel;
@@ -16,9 +17,6 @@ import static org.hamcrest.Matchers.*;
  */
 public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
-    private static final int MAX_AIR_PRESSURE = 800;
-    private static final int MIN_AIR_PRESSURE = 700;
-
     private static final double MAX_REGISTERED_WIND_SPEED_MPS = 113.0;
     private static final int MAX_POSSIBLE_HUMIDITY = 100;
     /*===========================================[ INSTANCE VARIABLES ]===========*/
@@ -33,8 +31,8 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
         assertThat("Max temperature limits violation", model.getMaxTemperature(),
                 withinHistoricalRecordsLimits());
 
-        assertThat("Air pressure limits violation", model.getAirPressure().getValue(),
-                (both(greaterThan(MIN_AIR_PRESSURE)).and(lessThan(MAX_AIR_PRESSURE))));
+        assertThat("Air pressure limits violation", model.getAirPressure(),
+                AirPressureMatchers.withinLogicalAirPressureLimits());
 
         assertThat("Humidity limits violation", model.getHumidity().getValue(),
                 (both(greaterThan(0)).and(lessThanOrEqualTo(MAX_POSSIBLE_HUMIDITY))));

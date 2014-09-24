@@ -28,6 +28,11 @@ public class BriefWeatherData {
         this.airPressure = new AirPressure(airPressure);
     }
 
+    public void setUnformattedAirPressure(String airPressure) {
+        int value = Integer.parseInt(airPressure);
+        this.airPressure = new AirPressure(value);
+    }
+
     public WindModel getWind() {
         return wind;
     }

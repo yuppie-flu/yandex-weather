@@ -4,8 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * TODO: add description
- *
  * @author Kirill Kozlov
  * @since 22.09.2014
  */
@@ -23,8 +21,18 @@ public class AirPressure {
         }
         this.value = Integer.parseInt(matcher.group(1));
     }
+
+    public AirPressure(int value) {
+        this.value = value;
+    }
+
     /*===========================================[ CLASS METHODS ]================*/
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(value);
     }
 }
