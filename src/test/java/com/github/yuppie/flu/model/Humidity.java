@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public class Humidity {
     /*===========================================[ STATIC VARIABLES ]=============*/
-    private static final Pattern PATTERN = Pattern.compile("Влажность: (\\d{1,2})%");
+    private static final Pattern PATTERN = Pattern.compile("(?:Влажность: )?(\\d{1,2})%");
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     private int value;
     /*===========================================[ CONSTRUCTORS ]=================*/
@@ -24,5 +24,10 @@ public class Humidity {
     /*===========================================[ CLASS METHODS ]================*/
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(value);
     }
 }

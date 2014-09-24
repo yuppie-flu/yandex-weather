@@ -61,16 +61,8 @@ public class BriefWeatherData {
         return minTemperature;
     }
 
-    public void setMinTemperature(String temperature) {
-        this.minTemperature = new Temperature(temperature);
-    }
-
     public Temperature getMaxTemperature() {
         return maxTemperature;
-    }
-
-    public void setMaxTemperature(String temperature) {
-        this.maxTemperature = new Temperature(temperature);
     }
 
     public void setBothTemperatures(String temperature) {
@@ -86,5 +78,17 @@ public class BriefWeatherData {
         }
         this.minTemperature = new Temperature(matcher.group(1));
         this.maxTemperature = new Temperature(matcher.group(2));
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder()
+            .append("WeatherData:{ ")
+            .append("temperature: ")
+            .append(minTemperature).append(" - ").append(maxTemperature)
+            .append(", air pressure: ").append(airPressure)
+            .append(", humidity: ").append(humidity)
+            .append("}");
+        return sb.toString();
     }
 }

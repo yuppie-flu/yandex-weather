@@ -21,6 +21,7 @@ public class TemperatureMatchers {
     private static final int MAX_REGISTERED_TEMP = 57;
     private static final int MIN_REGISTERED_TEMP = -92;
     /*===========================================[ INSTANCE VARIABLES ]===========*/
+    private TemperatureMatchers() {}
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public static Matcher<Temperature> withinLimits(int min, int max) {

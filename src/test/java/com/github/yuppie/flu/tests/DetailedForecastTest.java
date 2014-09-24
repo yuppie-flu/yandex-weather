@@ -1,7 +1,6 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.matchers.AirPressureMatchers;
-import com.github.yuppie.flu.matchers.TemperatureMatchers;
+import com.github.yuppie.flu.matchers.HumidityMatchers;
 import com.github.yuppie.flu.model.*;
 import com.github.yuppie.flu.pages.DetailedForecastPage;
 import com.github.yuppie.flu.util.WebDriverFactory;
@@ -11,19 +10,17 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.text.DateFormatSymbols;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import static com.github.yuppie.flu.matchers.AirPressureMatchers.withinLogicalAirPressureLimits;
+import static com.github.yuppie.flu.matchers.HumidityMatchers.withinLogicalHumidityLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunriseTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunsetTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 /**
  * Checks detailed forecast report.
@@ -93,9 +90,10 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
                 assertThat("Air pressure limits violation", weatherData.getAirPressure(),
                         withinLogicalAirPressureLimits());
 
-                LOGGER.info("{} temperatures: {} - {}, air pressure: {}", dayPart,
-                        weatherData.getMinTemperature(), weatherData.getMaxTemperature(),
-                        weatherData.getAirPressure());
+                assertThat("Humidity limits violation", weatherData.getHumidity(),
+                        withinLogicalHumidityLimits());
+
+                LOGGER.info("{} {} weather: {}", df.getDate(), dayPart, weatherData);
             }
         }
     }

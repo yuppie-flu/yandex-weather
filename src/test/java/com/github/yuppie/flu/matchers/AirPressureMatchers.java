@@ -1,7 +1,6 @@
 package com.github.yuppie.flu.matchers;
 
 import com.github.yuppie.flu.model.AirPressure;
-import com.github.yuppie.flu.model.Temperature;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 
@@ -22,6 +21,7 @@ public class AirPressureMatchers {
     private static final int MAX_AIR_PRESSURE = 800;
     private static final int MIN_AIR_PRESSURE = 700;
     /*===========================================[ INSTANCE VARIABLES ]===========*/
+    private AirPressureMatchers() {}
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public static Matcher<AirPressure> withinLimits(int min, int max) {

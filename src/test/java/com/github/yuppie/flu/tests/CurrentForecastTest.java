@@ -1,11 +1,11 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.matchers.AirPressureMatchers;
-import com.github.yuppie.flu.matchers.TemperatureMatchers;
+import com.github.yuppie.flu.matchers.HumidityMatchers;
 import com.github.yuppie.flu.model.BriefWeatherData;
 import com.github.yuppie.flu.model.WindModel;
 import org.testng.annotations.Test;
 
+import static com.github.yuppie.flu.matchers.AirPressureMatchers.withinLogicalAirPressureLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.*;
 import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,7 +18,6 @@ import static org.hamcrest.Matchers.*;
 public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
     private static final double MAX_REGISTERED_WIND_SPEED_MPS = 113.0;
-    private static final int MAX_POSSIBLE_HUMIDITY = 100;
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
@@ -32,10 +31,10 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
                 withinHistoricalRecordsLimits());
 
         assertThat("Air pressure limits violation", model.getAirPressure(),
-                AirPressureMatchers.withinLogicalAirPressureLimits());
+                withinLogicalAirPressureLimits());
 
-        assertThat("Humidity limits violation", model.getHumidity().getValue(),
-                (both(greaterThan(0)).and(lessThanOrEqualTo(MAX_POSSIBLE_HUMIDITY))));
+        assertThat("Humidity limits violation", model.getHumidity(),
+                HumidityMatchers.withinLogicalHumidityLimits());
 
         WindModel windModel = model.getWind();
 
