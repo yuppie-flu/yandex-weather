@@ -87,6 +87,8 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
                         withinHistoricalRecordsLimits());
                 assertThat(tempMessage, weatherData.getMaxTemperature(),
                         withinHistoricalRecordsLimits());
+                LOGGER.info("{} temperatures: {} - {}", dayPart,
+                        weatherData.getMinTemperature(), weatherData.getMaxTemperature());
             }
         }
     }
