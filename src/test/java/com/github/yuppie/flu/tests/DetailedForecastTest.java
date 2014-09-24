@@ -14,6 +14,8 @@ import java.text.DateFormatSymbols;
 import java.util.List;
 import java.util.Locale;
 
+import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunriseTimeWithinLogicalLimits;
+import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunsetTimeWithinLogicalLimits;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
@@ -68,6 +70,12 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
             assertThat("Incorrect date", actualDate, equalTo(expectedDate));
             String expectedDayName = RUSSIAN_SHORT_WEEKDAYS[expectedDate.getDayOfWeek()];
             assertThat("Incorrect short name of weekday", df.getDayName(), equalTo(expectedDayName));
+
+            assertThat("Sunrise time limits violation",
+                    df.getSunTime(), sunriseTimeWithinLogicalLimits());
+
+            assertThat("Sunset time limits violation",
+                    df.getSunTime(), sunsetTimeWithinLogicalLimits());
         }
     }
 }

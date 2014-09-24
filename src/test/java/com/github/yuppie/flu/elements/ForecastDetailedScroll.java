@@ -27,6 +27,11 @@ public class ForecastDetailedScroll extends HtmlElement {
     @FindBy(className = "b-forecast-detailed__month")
     private List<TextBlock> months;
 
+    @FindBy(xpath = "//td[contains(@class, 'b-forecast-detailed__item_type_rise')]")
+    private List<TextBlock> sunriseTimes;
+
+    @FindBy(xpath = "//td[contains(@class, 'b-forecast-detailed__item_type_sunset')]")
+    private List<TextBlock> sunsetTimes;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public int size() {
@@ -40,6 +45,7 @@ public class ForecastDetailedScroll extends HtmlElement {
             DetailedDayForecast dayForecast = new DetailedDayForecast();
             dayForecast.setDayName(dayNames.get(i).getText());
             dayForecast.setDate(dayAsNumbers.get(i).getText(), months.get(i).getText());
+            dayForecast.setSunTime(sunriseTimes.get(i).getText(), sunsetTimes.get(i).getText());
             forecast.add(dayForecast);
         }
         return forecast;

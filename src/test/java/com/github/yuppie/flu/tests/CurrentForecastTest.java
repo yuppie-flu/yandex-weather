@@ -2,10 +2,9 @@ package com.github.yuppie.flu.tests;
 
 import com.github.yuppie.flu.model.BriefWeatherReportModel;
 import com.github.yuppie.flu.model.WindModel;
-import org.joda.time.LocalTime;
-import org.joda.time.ReadablePartial;
 import org.testng.annotations.Test;
 
+import static com.github.yuppie.flu.matchers.SunTimeMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -23,12 +22,6 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
 
     private static final double MAX_REGISTERED_WIND_SPEED_MPS = 113.0;
     private static final int MAX_POSSIBLE_HUMIDITY = 100;
-
-    private static final ReadablePartial MIN_SUNRISE_TIME = new LocalTime(4, 0);
-    private static final ReadablePartial MAX_SUNRISE_TIME = new LocalTime(12, 0);
-
-    private static final ReadablePartial MIN_SUNSET_TIME= new LocalTime(14, 0);
-    private static final ReadablePartial MAX_SUNSET_TIME = new LocalTime(23, 59);
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
@@ -52,10 +45,10 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
         assertThat("Inconsistent wind speed data", windModel.getSpeedKmh(),
                 closeTo(windModel.getSpeedMps() * 3600 / 1000, 0.1));
 
-        assertThat("Sunrise time limits violation", model.getSunriseTime(),
-                (both(greaterThan(MIN_SUNRISE_TIME)).and(lessThan(MAX_SUNRISE_TIME))));
+        assertThat("Sunrise time limits violation",
+                model.getSunTime(), sunriseTimeWithinLogicalLimits());
 
-        assertThat("Sunset time limits violation", model.getSunsetTime(),
-                (both(greaterThan(MIN_SUNSET_TIME)).and(lessThan(MAX_SUNSET_TIME))));
+        assertThat("Sunset time limits violation",
+                model.getSunTime(), sunsetTimeWithinLogicalLimits());
     }
 }

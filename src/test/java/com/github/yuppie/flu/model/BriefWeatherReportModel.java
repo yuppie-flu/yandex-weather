@@ -46,11 +46,7 @@ public class BriefWeatherReportModel extends WeatherReportModel {
         this.sunTime = new SunTime(sunTime);
     }
 
-    public LocalTime getSunriseTime() {
-        return sunTime.getSunriseTime();
-    }
-
-    public LocalTime getSunsetTime() {
-        return sunTime.getSunsetTime();
+    public SunTime getSunTime() {
+        return sunTime;
     }
 }

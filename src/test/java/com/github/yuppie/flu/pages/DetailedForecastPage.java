@@ -10,7 +10,7 @@ import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 import java.util.List;
 
 /**
- * TODO: add description
+ * Represents detailed forecast report page.
  *
  * @author Kirill Kozlov
  * @since 24.09.2014

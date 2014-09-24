@@ -2,6 +2,7 @@ package com.github.yuppie.flu.model;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class DetailedDayForecast extends DayForecast {
         RUSSIAN_MONTH_NAMES.put("декабря", 12);
     }
     /*===========================================[ INSTANCE VARIABLES ]===========*/
+    private SunTime sunTime;
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public void setDate(String dayString, String monthString) {
@@ -45,5 +47,13 @@ public class DetailedDayForecast extends DayForecast {
 
         int day = Integer.parseInt(dayString);
         date = new LocalDate(year, month, day);
+    }
+
+    public void setSunTime(String sunrise, String sunset) {
+        this.sunTime = new SunTime(sunrise, sunset);
+    }
+
+    public SunTime getSunTime() {
+        return sunTime;
     }
 }
