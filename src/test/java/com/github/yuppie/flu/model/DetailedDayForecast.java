@@ -1,9 +1,11 @@
 package com.github.yuppie.flu.model;
 
+import com.github.yuppie.flu.pages.MainWeatherPage;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +33,7 @@ public class DetailedDayForecast extends DayForecast {
     }
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     private SunTime sunTime;
+    private Map<DayPart, BriefWeatherData> dayPartWeather = new EnumMap(DayPart.class);
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     public void setDate(String dayString, String monthString) {
@@ -55,5 +58,13 @@ public class DetailedDayForecast extends DayForecast {
 
     public SunTime getSunTime() {
         return sunTime;
+    }
+
+    public Map<DayPart, BriefWeatherData> getDayPartWeather() {
+        return dayPartWeather;
+    }
+
+    public void setWeather(DayPart dayPart, BriefWeatherData weather) {
+        dayPartWeather.put(dayPart, weather);
     }
 }

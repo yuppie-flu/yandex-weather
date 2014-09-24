@@ -1,6 +1,6 @@
 package com.github.yuppie.flu.elements;
 
-import com.github.yuppie.flu.model.BriefWeatherReportModel;
+import com.github.yuppie.flu.model.BriefWeatherData;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
@@ -34,8 +34,9 @@ public class TodayWeatherBlock extends HtmlElement {
 
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
-    public BriefWeatherReportModel getCurrentWeatherReport() {
-        BriefWeatherReportModel model = new BriefWeatherReportModel(temperature.getText());
+    public BriefWeatherData getCurrentWeatherReport() {
+        BriefWeatherData model = new BriefWeatherData();
+        model.setBothTemperatures(temperature.getText());
         model.setAirPressure(airPressure.getText());
         model.setWind(wind.getText());
         model.setHumidity(humidity.getText());

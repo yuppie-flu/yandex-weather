@@ -1,10 +1,12 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.model.BriefWeatherReportModel;
+import com.github.yuppie.flu.matchers.TemperatureMatchers;
+import com.github.yuppie.flu.model.BriefWeatherData;
 import com.github.yuppie.flu.model.WindModel;
 import org.testng.annotations.Test;
 
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.*;
+import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -14,9 +16,6 @@ import static org.hamcrest.Matchers.*;
  */
 public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
-    private static final int MAX_REGISTERED_TEMP = 57;
-    private static final int MIN_REGISTERED_TEMP = -92;
-
     private static final int MAX_AIR_PRESSURE = 800;
     private static final int MIN_AIR_PRESSURE = 700;
 
@@ -27,10 +26,12 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ CLASS METHODS ]================*/
     @Test
     public void checkTodayWeatherTest() {
-        BriefWeatherReportModel model = mainPage.getCurrentWeatherReport();
+        BriefWeatherData model = mainPage.getCurrentWeatherReport();
 
-        assertThat("Temperature limits violation", model.getTemperature().getValue(),
-                (both(greaterThan(MIN_REGISTERED_TEMP)).and(lessThan(MAX_REGISTERED_TEMP))));
+        assertThat("Min temperature limits violation", model.getMinTemperature(),
+                withinHistoricalRecordsLimits());
+        assertThat("Max temperature limits violation", model.getMaxTemperature(),
+                withinHistoricalRecordsLimits());
 
         assertThat("Air pressure limits violation", model.getAirPressure().getValue(),
                 (both(greaterThan(MIN_AIR_PRESSURE)).and(lessThan(MAX_AIR_PRESSURE))));

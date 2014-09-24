@@ -25,7 +25,7 @@ public class BriefForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
     @Test
-    public void checkForecastShortScrollTest() {
+    public void checkBriefForecastTest() {
         int actualScroolSize = mainPage.getBriefForecastScrollSize();
         assertThat("Unexpected number of days in short forecast scroll",
                 actualScroolSize,

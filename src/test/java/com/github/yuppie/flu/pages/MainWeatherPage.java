@@ -2,7 +2,7 @@ package com.github.yuppie.flu.pages;
 
 import com.github.yuppie.flu.elements.*;
 import com.github.yuppie.flu.model.BriefDayForecast;
-import com.github.yuppie.flu.model.BriefWeatherReportModel;
+import com.github.yuppie.flu.model.BriefWeatherData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -48,7 +48,7 @@ public class MainWeatherPage extends YandexPage {
         searchForm.search(cityRequest);
     }
 
-    public BriefWeatherReportModel getCurrentWeatherReport() {
+    public BriefWeatherData getCurrentWeatherReport() {
         return todayWeatherBlock.getCurrentWeatherReport();
     }
 

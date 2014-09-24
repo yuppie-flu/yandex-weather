@@ -1,7 +1,7 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.model.BriefDayForecast;
-import com.github.yuppie.flu.model.DetailedDayForecast;
+import com.github.yuppie.flu.matchers.TemperatureMatchers;
+import com.github.yuppie.flu.model.*;
 import com.github.yuppie.flu.pages.DetailedForecastPage;
 import com.github.yuppie.flu.util.WebDriverFactory;
 import org.joda.time.LocalDate;
@@ -13,9 +13,11 @@ import org.testng.annotations.Test;
 import java.text.DateFormatSymbols;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunriseTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunsetTimeWithinLogicalLimits;
+import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
@@ -52,7 +54,7 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
     }
 
     @Test
-    public void checkForecastShortScrollTest() {
+    public void checkDetailedForecastTest() {
         int actualScroolSize = detailedForecastPage.getDetailedForecastScrollSize();
         assertThat("Unexpected number of days in short forecast scroll",
                 actualScroolSize,
@@ -76,6 +78,16 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
 
             assertThat("Sunset time limits violation",
                     df.getSunTime(), sunsetTimeWithinLogicalLimits());
+
+            Map<DayPart, BriefWeatherData> dayPartWeather = df.getDayPartWeather();
+            for (DayPart dayPart: dayPartWeather.keySet()) {
+                String tempMessage = String.format("%s temp limits violations", dayPart);
+                BriefWeatherData weatherData = dayPartWeather.get(dayPart);
+                assertThat(tempMessage, weatherData.getMinTemperature(),
+                        withinHistoricalRecordsLimits());
+                assertThat(tempMessage, weatherData.getMaxTemperature(),
+                        withinHistoricalRecordsLimits());
+            }
         }
     }
 }

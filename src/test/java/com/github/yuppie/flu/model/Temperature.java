@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public class Temperature {
     /*===========================================[ STATIC VARIABLES ]=============*/
-    private static final Pattern PATTERN = Pattern.compile("([-+]\\d{1,2}) °C");
+    private static final Pattern PATTERN = Pattern.compile("([-+]\\d{1,2})( °C)?");
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     private int value;
     /*===========================================[ CONSTRUCTORS ]=================*/
