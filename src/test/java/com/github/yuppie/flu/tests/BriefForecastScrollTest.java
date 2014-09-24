@@ -1,6 +1,6 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.model.DayForecast;
+import com.github.yuppie.flu.model.BriefDayForecast;
 import org.joda.time.LocalDate;
 import org.testng.annotations.Test;
 
@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
  * @author Kirill Kozlov
  * @since 23.09.2014
  */
-public class ShortForecastScrollTest extends YandexWeatherBaseTest {
+public class BriefForecastScrollTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
     public static final int TODAY_SCROLL_SIZE = 10;
     public static final int TOMORROW_SCROLL_SIZE = 9;
@@ -26,12 +26,12 @@ public class ShortForecastScrollTest extends YandexWeatherBaseTest {
     /*===========================================[ CLASS METHODS ]================*/
     @Test
     public void checkForecastShortScrollTest() {
-        int actualScroolSize = mainPage.getShortForecastScrollSize();
+        int actualScroolSize = mainPage.getBriefForecastScrollSize();
         assertThat("Unexpected number of days in short forecast scroll",
                 actualScroolSize,
                 anyOf(equalTo(TODAY_SCROLL_SIZE), equalTo(TOMORROW_SCROLL_SIZE)));
 
-        List<DayForecast> forecast = mainPage.getFullForecast();
+        List<BriefDayForecast> forecast = mainPage.getBriefForecast();
         String actualFirstDayName = forecast.get(0).getDayName();
 
         if (actualScroolSize == TODAY_SCROLL_SIZE) {
@@ -48,7 +48,7 @@ public class ShortForecastScrollTest extends YandexWeatherBaseTest {
         }
 
         for (int i = 0; i < actualScroolSize; i++) {
-            DayForecast df = forecast.get(i);
+            BriefDayForecast df = forecast.get(i);
 
             int actualDay = df.getDate().getDayOfMonth();
             int expectedDay = startDate.plusDays(i).getDayOfMonth();

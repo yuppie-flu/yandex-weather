@@ -1,6 +1,6 @@
 package com.github.yuppie.flu.elements;
 
-import com.github.yuppie.flu.model.DayForecast;
+import com.github.yuppie.flu.model.BriefDayForecast;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
@@ -10,12 +10,11 @@ import java.util.List;
 
 /**
  * Represents forecast scroll with short weather information.
- * Contains the next 9 days.
  *
  * @author Kirill Kozlov
  * @since 22.09.2014
  */
-public class ForecastShortScroll extends HtmlElement {
+public class ForecastBriefScroll extends HtmlElement {
     /*===========================================[ STATIC VARIABLES ]=============*/
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     @FindBy(className = "b-forecast__dayname")
@@ -38,11 +37,11 @@ public class ForecastShortScroll extends HtmlElement {
         return dayNames.size();
     }
 
-    public List<DayForecast> getFullForecast() {
+    public List<BriefDayForecast> getForecast() {
         int size = size();
-        List<DayForecast> fullForecast = new ArrayList(size);
+        List<BriefDayForecast> fullForecast = new ArrayList<>(size);
         for(int i = 0; i < size; i++) {
-            DayForecast dayForecast = new DayForecast();
+            BriefDayForecast dayForecast = new BriefDayForecast();
             dayForecast.setDayName(dayNames.get(i).getText());
             dayForecast.setDate(dates.get(i).getText());
             dayForecast.setDescription(descriptions.get(i).getText());

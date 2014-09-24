@@ -27,15 +27,11 @@ public class YandexWeatherBaseTest {
     /*===========================================[ CLASS METHODS ]================*/
     @BeforeMethod
     protected void initPageObjects() {
-        String initialUrl = getInitialPageUrlForTest();
+        String initialUrl = properties.getMainPageUrl();
         LOGGER.info("Load initial page for the test: {}", initialUrl);
         driver = WebDriverFactory.getWebDriver();
         driver.get(initialUrl);
         mainPage = new MainWeatherPage(driver);
-    }
-
-    protected String getInitialPageUrlForTest() {
-        return properties.getMainPageUrl();
     }
 
     @AfterSuite

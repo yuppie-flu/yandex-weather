@@ -1,6 +1,6 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.model.DetailedWeatherReportModel;
+import com.github.yuppie.flu.model.BriefWeatherReportModel;
 import com.github.yuppie.flu.model.WindModel;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePartial;
@@ -34,7 +34,7 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ CLASS METHODS ]================*/
     @Test
     public void checkTodayWeatherTest() {
-        DetailedWeatherReportModel model = mainPage.getCurrentWeatherReport();
+        BriefWeatherReportModel model = mainPage.getCurrentWeatherReport();
 
         assertThat("Temperature limits violation", model.getTemperature().getValue(),
                 (both(greaterThan(MIN_REGISTERED_TEMP)).and(lessThan(MAX_REGISTERED_TEMP))));

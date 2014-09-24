@@ -6,7 +6,7 @@ import org.joda.time.LocalTime;
  * @author Kirill Kozlov
  * @since 22.09.2014
  */
-public class DetailedWeatherReportModel extends WeatherReportModel {
+public class BriefWeatherReportModel extends WeatherReportModel {
     /*===========================================[ STATIC VARIABLES ]=============*/
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     private AirPressure airPressure;
@@ -14,7 +14,7 @@ public class DetailedWeatherReportModel extends WeatherReportModel {
     private Humidity humidity;
     private SunTime sunTime;
     /*===========================================[ CONSTRUCTORS ]=================*/
-    public DetailedWeatherReportModel(String temperature) {
+    public BriefWeatherReportModel(String temperature) {
         super(temperature);
     }
     /*===========================================[ CLASS METHODS ]================*/

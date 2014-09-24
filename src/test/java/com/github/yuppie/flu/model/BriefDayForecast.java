@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @author Kirill Kozlov
  * @since 22.09.2014
  */
-public class DayForecast {
+public class BriefDayForecast {
     /*===========================================[ STATIC VARIABLES ]=============*/
     public static final Pattern DATE_PATTERN = Pattern.compile("([0-9]{1,2})( [а-я]*)?");
     /*===========================================[ INSTANCE VARIABLES ]===========*/

@@ -1,10 +1,10 @@
 *** Test cases ***
-1) Checking today weather report - ALMOST DONE
-2) Checking short forecast (9 days) - IN PROGRESS
-3) Checking detailed forecast
-4) Search custom city - TEMPLATE IS ready
-   - add data provider with several cities
-5) Checking links to other Yandex services
+1) Checking today weather report           - DONE
+2) Checking short forecast (9 days)        - DONE
+3) Checking detailed forecast              - IN PROGRESS
+4) Search custom city                      - DONE
+   - add data provider with several cities - TODO
+5) Checking links to other Yandex services - DONE
 6) ...
 7) ...
 ---

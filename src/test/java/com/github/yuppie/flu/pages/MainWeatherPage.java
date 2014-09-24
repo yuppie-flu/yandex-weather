@@ -1,8 +1,8 @@
 package com.github.yuppie.flu.pages;
 
 import com.github.yuppie.flu.elements.*;
-import com.github.yuppie.flu.model.DayForecast;
-import com.github.yuppie.flu.model.DetailedWeatherReportModel;
+import com.github.yuppie.flu.model.BriefDayForecast;
+import com.github.yuppie.flu.model.BriefWeatherReportModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -31,7 +31,7 @@ public class MainWeatherPage extends YandexPage {
     private TodayWeatherBlock todayWeatherBlock;
 
     @FindBy(xpath = "//div[@class = 'b-forecast-scroll']/div")
-    private ForecastShortScroll shortScroll;
+    private ForecastBriefScroll briefScroll;
 
     @FindBy(xpath = "//div[@class = 'b-widget-current-weather']/following-sibling::*[1]/self::div")
     private ForecastTypeSelector forecastTypeSelector;
@@ -48,16 +48,16 @@ public class MainWeatherPage extends YandexPage {
         searchForm.search(cityRequest);
     }
 
-    public DetailedWeatherReportModel getCurrentWeatherReport() {
+    public BriefWeatherReportModel getCurrentWeatherReport() {
         return todayWeatherBlock.getCurrentWeatherReport();
     }
 
-    public List<DayForecast> getFullForecast() {
-        return shortScroll.getFullForecast();
+    public List<BriefDayForecast> getBriefForecast() {
+        return briefScroll.getForecast();
     }
 
-    public int getShortForecastScrollSize() {
-        return shortScroll.size();
+    public int getBriefForecastScrollSize() {
+        return briefScroll.size();
     }
 
     public DetailedForecastPage getDetaliedForecat() {
