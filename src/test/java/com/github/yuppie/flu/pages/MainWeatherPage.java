@@ -6,8 +6,10 @@ import com.github.yuppie.flu.model.BriefWeatherData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.yandex.qatools.htmlelements.element.TextBlock;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
+import java.awt.event.TextEvent;
 import java.util.List;
 
 /**
@@ -36,6 +38,9 @@ public class MainWeatherPage extends YandexPage {
     @FindBy(xpath = "//div[@class = 'b-widget-current-weather']/following-sibling::*[1]/self::div")
     private ForecastTypeSelector forecastTypeSelector;
 
+    @FindBy(className = "b-navigation-city")
+    private TextBlock cityNavigation;
+
     /*===========================================[ CONSTRUCTORS ]=================*/
     public MainWeatherPage(WebDriver driver) {
         super(driver.getCurrentUrl());
@@ -46,6 +51,10 @@ public class MainWeatherPage extends YandexPage {
     /*===========================================[ CLASS METHODS ]================*/
     public void searchCity(String cityRequest) {
         searchForm.search(cityRequest);
+    }
+
+    public String getHeaderWithCityName() {
+        return cityNavigation.getText();
     }
 
     public BriefWeatherData getCurrentWeatherReport() {

@@ -6,7 +6,7 @@
           <class name="com.github.yuppie.flu.tests.CurrentForecastTest"/>
           <class name="com.github.yuppie.flu.tests.BriefForecastTest"/>
           <class name="com.github.yuppie.flu.tests.DetailedForecastTest"/>
-          <class name="com.github.yuppie.flu.tests.SearchTest"/>
+          <class name="com.github.yuppie.flu.tests.SearchCityTest"/>
           <class name="com.github.yuppie.flu.tests.LinksTest"/>
       </classes>
   </test>

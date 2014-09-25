@@ -26,7 +26,7 @@ public class SunTime {
             throw new IllegalArgumentException(
                     String.format("Incorrect format of sun time information: %s", formatString));
         }
-        this.sunsetTime = createLocalTime(matcher.group(1), matcher.group(2));
+        this.sunriseTime = createLocalTime(matcher.group(1), matcher.group(2));
         this.sunsetTime = createLocalTime(matcher.group(3), matcher.group(4));
     }
 

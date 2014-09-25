@@ -1,13 +1,13 @@
 *** Test cases ***
 1) Checking today weather report           - DONE
-2) Checking short forecast (9 days)        - DONE
-3) Checking detailed forecast              - IN PROGRESS
+2) Checking short forecast                 - DONE
+3) Checking detailed forecast              - DONE
 4) Search custom city                      - DONE
-   - add data provider with several cities - TODO
 5) Checking links to other Yandex services - DONE
 6) ...
 7) ...
 ---
+* Negative cases for search city
 * Check that ads are shown, cause it's money?
 * Check Authorization form?
 * ...
@@ -22,3 +22,4 @@
 4) Run tests in different time, cause page content depends on local time
 5) What about locale? Is this service only in Russian?
 6) @CacheLookup - do not search elements several times
+7) Use css locator instead of xpath, cause they are faster according to internet
