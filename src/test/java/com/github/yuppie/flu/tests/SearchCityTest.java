@@ -20,14 +20,13 @@ public class SearchCityTest extends YandexWeatherBaseTest {
     @DataProvider()
     public Object[][] cityRequestsProvider() {
         return new Object[][] {
-                { "москва", "Москвe"},
-                { "АНТАЛЬЯ", "Aнталья"},
+                { "москва", "Москве"},
+                { "АНТАЛЬЯ", "Aнталье"},
                 { "Malmö", "Мальмё"},
         };
     }
 
-
-    @Test(dataProvider = "cityRequestProvider")
+    @Test(dataProvider = "cityRequestsProvider")
     public void checkCustomCityForecastTest(String request, String expectedCity) {
         mainPage.searchCity(request);
         String expectedHeader = String.format("Погода в %s", expectedCity);
