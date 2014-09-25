@@ -2,12 +2,13 @@ package com.github.yuppie.flu.tests;
 
 import com.github.yuppie.flu.matchers.HumidityMatchers;
 import com.github.yuppie.flu.model.BriefWeatherData;
-import com.github.yuppie.flu.model.WindModel;
+import com.github.yuppie.flu.model.Wind;
 import org.testng.annotations.Test;
 
 import static com.github.yuppie.flu.matchers.AirPressureMatchers.withinLogicalAirPressureLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.*;
 import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
+import static com.github.yuppie.flu.matchers.WindMatchers.withinHistoricalWindLimits;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -17,7 +18,6 @@ import static org.hamcrest.Matchers.*;
  */
 public class CurrentForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ STATIC VARIABLES ]=============*/
-    private static final double MAX_REGISTERED_WIND_SPEED_MPS = 113.0;
     /*===========================================[ INSTANCE VARIABLES ]===========*/
     /*===========================================[ CONSTRUCTORS ]=================*/
     /*===========================================[ CLASS METHODS ]================*/
@@ -36,12 +36,11 @@ public class CurrentForecastTest extends YandexWeatherBaseTest {
         assertThat("Humidity limits violation", model.getHumidity(),
                 HumidityMatchers.withinLogicalHumidityLimits());
 
-        WindModel windModel = model.getWind();
+        Wind wind = model.getWind();
 
-        assertThat("Wind speed limits violation", windModel.getSpeedMps(),
-                (both(greaterThanOrEqualTo(0.0)).and(lessThan(MAX_REGISTERED_WIND_SPEED_MPS))));
-        assertThat("Inconsistent wind speed data", windModel.getSpeedKmh(),
-                closeTo(windModel.getSpeedMps() * 3600 / 1000, 0.1));
+        assertThat("Wind speed limits violation", wind, withinHistoricalWindLimits());
+        assertThat("Inconsistent wind speed data", wind.getSpeedKmh(),
+                closeTo(wind.getSpeedMps() * 3600 / 1000, 0.1));
 
         assertThat("Sunrise time limits violation",
                 model.getSunTime(), sunriseTimeWithinLogicalLimits());

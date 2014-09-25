@@ -15,7 +15,7 @@ public class BriefWeatherData {
     private Temperature minTemperature;
     private Temperature maxTemperature;
     private AirPressure airPressure;
-    private WindModel wind;
+    private Wind wind;
     private Humidity humidity;
     private SunTime sunTime;
     /*===========================================[ CONSTRUCTORS ]=================*/
@@ -33,12 +33,16 @@ public class BriefWeatherData {
         this.airPressure = new AirPressure(value);
     }
 
-    public WindModel getWind() {
+    public Wind getWind() {
         return wind;
     }
 
     public void setWind(String wind) {
-        this.wind = new WindModel(wind);
+        this.wind = new Wind(wind);
+    }
+
+    public void setWind(String direction, String speedMps) {
+        this.wind = new Wind(direction, speedMps);
     }
 
     public Humidity getHumidity() {
@@ -88,6 +92,7 @@ public class BriefWeatherData {
             .append(minTemperature).append(" - ").append(maxTemperature)
             .append(", air pressure: ").append(airPressure)
             .append(", humidity: ").append(humidity)
+            .append(", wind: ").append(wind)
             .append("}");
         return sb.toString();
     }

@@ -4,11 +4,13 @@ import com.github.yuppie.flu.model.Humidity;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 
-import static org.hamcrest.Matchers.both;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
 /**
+ * Hamcrest matchers for Humidity.
+ *
+ * @see com.github.yuppie.flu.model.Humidity
+ *
  * @author Kirill Kozlov
  * @since 25.09.2014
  */

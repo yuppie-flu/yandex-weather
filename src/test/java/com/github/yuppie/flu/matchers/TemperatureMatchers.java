@@ -4,9 +4,7 @@ import com.github.yuppie.flu.model.Temperature;
 import org.hamcrest.FeatureMatcher;
 import org.hamcrest.Matcher;
 
-import static org.hamcrest.CoreMatchers.both;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Hamcrest matchers for Temperature

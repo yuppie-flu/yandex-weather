@@ -3,7 +3,7 @@ package com.github.yuppie.flu.pages;
 import org.openqa.selenium.WebDriver;
 
 /**
- * TODO: add description
+ * Represents main page of Yandex mail service.
  *
  * @author Kirill Kozlov
  * @since 24.09.2014

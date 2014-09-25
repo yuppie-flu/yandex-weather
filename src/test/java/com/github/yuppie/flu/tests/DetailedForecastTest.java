@@ -1,6 +1,5 @@
 package com.github.yuppie.flu.tests;
 
-import com.github.yuppie.flu.matchers.HumidityMatchers;
 import com.github.yuppie.flu.model.*;
 import com.github.yuppie.flu.pages.DetailedForecastPage;
 import com.github.yuppie.flu.util.WebDriverFactory;
@@ -18,6 +17,8 @@ import static com.github.yuppie.flu.matchers.HumidityMatchers.withinLogicalHumid
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunriseTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.SunTimeMatchers.sunsetTimeWithinLogicalLimits;
 import static com.github.yuppie.flu.matchers.TemperatureMatchers.withinHistoricalRecordsLimits;
+import static com.github.yuppie.flu.matchers.WindMatchers.withinHistoricalWindLimits;
+import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
@@ -44,7 +45,7 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
     /*===========================================[ CLASS METHODS ]================*/
     @BeforeMethod
     protected void initPageObjects() {
-        String initialUrl = String.format("%s%s",
+        String initialUrl = format("%s%s",
                 properties.getMainPageUrl(), properties.getDetailsPostfix());
         LOGGER.info("Load initial page for the test: {}", initialUrl);
         driver = WebDriverFactory.getWebDriver();
@@ -80,20 +81,23 @@ public class DetailedForecastTest extends YandexWeatherBaseTest {
 
             Map<DayPart, BriefWeatherData> dayPartWeather = df.getDayPartWeather();
             for (DayPart dayPart: dayPartWeather.keySet()) {
-                String tempMessage = String.format("%s temp limits violations", dayPart);
+                String tempMessage = format("%s temp limits violations", dayPart);
                 BriefWeatherData weatherData = dayPartWeather.get(dayPart);
                 assertThat(tempMessage, weatherData.getMinTemperature(),
                         withinHistoricalRecordsLimits());
                 assertThat(tempMessage, weatherData.getMaxTemperature(),
                         withinHistoricalRecordsLimits());
 
-                assertThat("Air pressure limits violation", weatherData.getAirPressure(),
-                        withinLogicalAirPressureLimits());
+                assertThat(format("%s %s: Air pressure limits violation", actualDate, dayPart),
+                        weatherData.getAirPressure(), withinLogicalAirPressureLimits());
 
-                assertThat("Humidity limits violation", weatherData.getHumidity(),
-                        withinLogicalHumidityLimits());
+                assertThat(format("%s %s: Humidity limits violation", actualDate, dayPart),
+                        weatherData.getHumidity(), withinLogicalHumidityLimits());
 
-                LOGGER.info("{} {} weather: {}", df.getDate(), dayPart, weatherData);
+                assertThat(format("%s, %s: Wind limits violation", actualDate, dayPart),
+                        weatherData.getWind(), withinHistoricalWindLimits());
+
+                LOGGER.debug("{} {} weather: {}", df.getDate(), dayPart, weatherData);
             }
         }
     }

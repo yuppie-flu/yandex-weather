@@ -6,7 +6,7 @@ import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
 
 /**
- * TODO: add description
+ * Represents current weather report block.
  *
  * @author Kirill Kozlov
  * @since 22.09.2014

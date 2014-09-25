@@ -1,7 +1,7 @@
 package com.github.yuppie.flu.pages;
 
 /**
- * Represents web page.
+ * Represents abstract web page.
  *
  * @author Kirill Kozlov
  * @since 24.09.2014

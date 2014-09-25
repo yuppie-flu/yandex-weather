@@ -6,9 +6,7 @@ import org.hamcrest.Matcher;
 import org.joda.time.LocalTime;
 import org.joda.time.ReadablePartial;
 
-import static org.hamcrest.CoreMatchers.both;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Hamcrest matchers for SunTime.

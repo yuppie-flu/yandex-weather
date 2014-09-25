@@ -1,9 +1,7 @@
 package com.github.yuppie.flu.model;
 
-import com.github.yuppie.flu.pages.MainWeatherPage;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
 
 import java.util.EnumMap;
 import java.util.HashMap;
