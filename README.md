@@ -6,7 +6,7 @@ Simple tests for yandex-weather service with help of Selenium tool.
 Cases
 -----
 - [x] Checking today weather report
-- [x] Checking short forecast
+- [x] Checking brief forecast
 - [x] Checking detailed forecast
 - [x] Search custom city
 - [x] Checking links to other Yandex services
