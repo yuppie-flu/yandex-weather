@@ -1,7 +1,7 @@
 yandex-weather
 ==============
 
-Simple tests for yandex-weather service with help of Selenium tool.
+Simple tests for yandex-weather service with help of Selenium tool. Only Mozilla Firefox supported by now.
 
 Cases
 -----
@@ -13,7 +13,7 @@ Cases
 
 Requirements
 ------------
-Java 7+, Maven 3.+
+Java 7+, Maven 3.+, Mozilla Firefox 31+
 
 Execution
 ---------
