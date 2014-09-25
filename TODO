@@ -1,6 +1,6 @@
 *** Test cases ***
 1) Checking today weather report           - DONE
-2) Checking short forecast                 - DONE
+2) Checking brief forecast                 - DONE
 3) Checking detailed forecast              - DONE
 4) Search custom city                      - DONE
 5) Checking links to other Yandex services - DONE
@@ -13,7 +13,7 @@
 * ...
 
 *** Infrastructure ***
-1) Add Allure reporting with screenshots
+1) Improve Allure usage: screenshots, steps, etc.
 
 *** Misc ***
 1) Different browsers (Selenium grid?)
