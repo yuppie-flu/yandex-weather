@@ -21,7 +21,7 @@ public class SearchCityTest extends YandexWeatherBaseTest {
     public Object[][] cityRequestsProvider() {
         return new Object[][] {
                 { "москва", "Москве"},
-                { "АНТАЛЬЯ", "Aнталье"},
+                { "АНТАЛЬЯ", "Анталье"},
                 { "Malmö", "Мальмё"},
         };
     }
